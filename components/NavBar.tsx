@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import styles from "@/styles/NavBar.module.css";
+import styles from "@/styles/NavBar.module.scss";
 
 const NavBar = () => {
   return (
     <div className={styles.navbar}>
-      <div className={styles.navbarContainer}>
+      <div className={styles.container}>
         <Image
           src="/logo.png"
           alt="logo"
@@ -14,11 +14,9 @@ const NavBar = () => {
         />
 
         <div>
-          <button className={styles.navBarButton}>Log in</button>
+          <button className={styles.button}>Log in</button>
 
-          <button
-            className={[styles.signUpButton, styles.navBarButton].join(" ")}
-          >
+          <button className={[styles.signUpButton, styles.button].join(" ")}>
             Sign up
           </button>
         </div>

@@ -1,22 +1,24 @@
 .navbar {
   background-color: #1b1b1b;
-  padding: 1.1rem 0;
+  padding: 1.6rem 0;
 }
 
-.navbarContainer {
+.container {
   margin: 0 auto;
-  max-width: 60rem;
+  max-width: 110rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.navBarButton {
+
+.button {
   background-color: transparent;
   border: none;
   color: white;
-  padding: 0.7rem 1rem;
-  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
   border-radius: 30px;
+
 }
 
 .signUpButton {
