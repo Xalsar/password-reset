@@ -18,7 +18,7 @@ const ResetPasswordForm = () => {
 
         <input placeholder="Confirm password" />
 
-        <button>Submit</button>
+        <button disabled>Submit</button>
       </form>
     </div>
   );
