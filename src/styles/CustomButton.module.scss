@@ -7,9 +7,12 @@
   border-radius: 30px;
   line-height: 2.4rem;
   font-weight: 500;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
 
   &:disabled {
     opacity: 0.5;
+    transform: scale(0.9);
   }
 
   &.secondary {
