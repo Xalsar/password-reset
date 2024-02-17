@@ -1,5 +1,7 @@
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 
+import CustomButton from "../CustomButton";
+
 import styles from "@/styles/ResetPasswordForm.module.scss";
 
 import useResetPaswordForm from "./hooks/use-resetPasswordForm";
@@ -62,12 +64,9 @@ const ResetPasswordForm = () => {
           type="password"
         />
 
-        <button
-          disabled={!isPasswordValid || isLoading}
-          className={styles.submitButton}
-        >
+        <CustomButton disabled={!isPasswordValid || isLoading}>
           {isLoading ? "Loading..." : "Submit"}
-        </button>
+        </CustomButton>
       </form>
     </div>
   );

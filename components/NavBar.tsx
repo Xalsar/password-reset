@@ -1,3 +1,5 @@
+import CustomButton from "./CustomButton";
+
 import styles from "@/styles/NavBar.module.scss";
 
 const NavBar = () => {
@@ -7,11 +9,9 @@ const NavBar = () => {
         <img src="/logo-svg.svg" className={styles.logo} />
 
         <div>
-          <button className={styles.button}>Log in</button>
+          <CustomButton secondary>Log in</CustomButton>
 
-          <button className={[styles.signUpButton, styles.button].join(" ")}>
-            Sign up
-          </button>
+          <CustomButton>Sign up</CustomButton>
         </div>
       </div>
     </div>
