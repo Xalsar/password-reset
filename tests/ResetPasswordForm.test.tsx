@@ -305,7 +305,7 @@ test(`"Submit" button should be disabled when password is not valid`, () => {
   expect(submitButton).toBeDisabled();
 });
 
-test(`"Submit" button should be loading when user submits the form correctlly`, async () => {
+test(`A spinner should be displayed instead of "Submit" button when form is loading`, async () => {
   render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
@@ -318,9 +318,11 @@ test(`"Submit" button should be loading when user submits the form correctlly`, 
 
   fireEvent.click(submitButton);
 
+  const spinner = screen.getByTestId("spinner");
+
   await waitFor(() => {
-    expect(submitButton).toHaveProperty("disabled", true);
-    expect(submitButton).toHaveTextContent("Loading...");
+    expect(submitButton).not.toBeInTheDocument();
+    expect(spinner).toBeInTheDocument();
   });
 });
 
@@ -389,16 +391,15 @@ test("when form is beeing submitted all inputs should be disabled", async () => 
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
-  const submitButton = screen.getByText("Submit");
+  const resetPasswordForm = screen.getByTestId("reset-password-form");
 
   fireEvent.change(passwordInput, { target: { value: "Password123!" } });
   fireEvent.change(confirmPasswordInput, { target: { value: "Password123!" } });
 
-  fireEvent.click(submitButton);
+  fireEvent.submit(resetPasswordForm);
 
   await waitFor(() => {
     expect(passwordInput).toBeDisabled();
     expect(confirmPasswordInput).toBeDisabled();
-    expect(submitButton).toBeDisabled();
   });
 });

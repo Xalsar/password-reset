@@ -4,7 +4,7 @@ import CheckBoxIcon from "../CheckBoxIcon";
 
 import styles from "@/styles/ResetPasswordForm.module.scss";
 
-import { Box, Flex } from "@cmpsr/components";
+import { Box, Flex, Spinner } from "@cmpsr/components";
 
 import useResetPaswordForm from "./hooks/use-resetPasswordForm";
 
@@ -31,7 +31,7 @@ const ResetPasswordForm = () => {
     <Box className={styles.resetPasswordForm}>
       <h1 className={styles.title}>Reset password</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="reset-password-form">
         <input
           placeholder="New password"
           value={password}
@@ -73,12 +73,11 @@ const ResetPasswordForm = () => {
           disabled={isLoading}
         />
 
-        <CustomButton
-          disabled={!isPasswordValid || isLoading}
-          className={styles.submitFormButton}
-        >
-          {isLoading ? "Loading..." : "Submit"}
-        </CustomButton>
+        {isLoading ? (
+          <Spinner data-testid="spinner" />
+        ) : (
+          <CustomButton disabled={!isPasswordValid}>Submit</CustomButton>
+        )}
       </form>
     </Box>
   );
