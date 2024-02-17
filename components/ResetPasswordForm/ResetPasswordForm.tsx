@@ -66,7 +66,10 @@ const ResetPasswordForm = () => {
           disabled={isLoading}
         />
 
-        <CustomButton disabled={!isPasswordValid || isLoading}>
+        <CustomButton
+          disabled={!isPasswordValid || isLoading}
+          className={styles.submitFormButton}
+        >
           {isLoading ? "Loading..." : "Submit"}
         </CustomButton>
       </form>
