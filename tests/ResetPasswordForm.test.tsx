@@ -377,3 +377,22 @@ test(`console.log with message "error changing password" should be called when u
     expect(console.log).toHaveBeenCalledWith("error changing password");
   });
 });
+
+test("when form is beeing submitted all inputs should be disabled", async () => {
+  render(<ResetPasswordForm />);
+
+  const passwordInput = screen.getByPlaceholderText("New password");
+  const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
+  const submitButton = screen.getByText("Submit");
+
+  fireEvent.change(passwordInput, { target: { value: "Password123!" } });
+  fireEvent.change(confirmPasswordInput, { target: { value: "Password123!" } });
+
+  fireEvent.click(submitButton);
+
+  await waitFor(() => {
+    expect(passwordInput).toBeDisabled();
+    expect(confirmPasswordInput).toBeDisabled();
+    expect(submitButton).toBeDisabled();
+  });
+});

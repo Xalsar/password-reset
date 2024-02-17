@@ -36,6 +36,7 @@ const ResetPasswordForm = () => {
           onChange={handleTypePassword}
           className={styles.passwordInput}
           type="password"
+          disabled={isLoading}
         />
 
         <ul className={styles.validationParams}>
@@ -62,6 +63,7 @@ const ResetPasswordForm = () => {
           onChange={handleTypeConfirmPassword}
           className={`${styles.passwordInput} ${styles.confirmPasswordInput}`}
           type="password"
+          disabled={isLoading}
         />
 
         <CustomButton disabled={!isPasswordValid || isLoading}>
