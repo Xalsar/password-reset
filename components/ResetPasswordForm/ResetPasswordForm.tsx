@@ -1,6 +1,6 @@
-import TaskAltIcon from "@mui/icons-material/TaskAlt";
-
 import CustomButton from "../CustomButton";
+
+import CheckBoxIcon from "../CheckBoxIcon";
 
 import styles from "@/styles/ResetPasswordForm.module.scss";
 
@@ -41,19 +41,20 @@ const ResetPasswordForm = () => {
 
         <ul className={styles.validationParams}>
           <li className={`${has12Characters ? styles.valid : ""}`}>
-            <TaskAltIcon /> 12 characters minimum
+            <CheckBoxIcon />
+            12 characters minimum
           </li>
           <li className={`${hasNumber ? styles.valid : ""}`}>
-            <TaskAltIcon /> One number
+            <CheckBoxIcon /> One number
           </li>
           <li className={`${hasLowerCase ? styles.valid : ""}`}>
-            <TaskAltIcon /> One lowercase letter
+            <CheckBoxIcon /> One lowercase letter
           </li>
           <li className={`${hasSpecialCharacter ? styles.valid : ""}`}>
-            <TaskAltIcon /> One special character
+            <CheckBoxIcon /> One special character
           </li>
           <li className={`${hasUpperCase ? styles.valid : ""}`}>
-            <TaskAltIcon /> One uppercase character
+            <CheckBoxIcon /> One uppercase character
           </li>
         </ul>
 
