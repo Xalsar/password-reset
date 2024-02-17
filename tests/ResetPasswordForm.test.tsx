@@ -428,4 +428,24 @@ describe("ResetPasswordForm", () => {
       expect(confirmPasswordInput).toBeDisabled();
     });
   });
+
+  test("submitting the form should be the same as clicking the submit button", async () => {
+    render(wrapWithCmpsrProvider(<ResetPasswordForm />));
+
+    const passwordInput = screen.getByPlaceholderText("New password");
+    const confirmPasswordInput =
+      screen.getByPlaceholderText("Confirm password");
+    const resetPasswordForm = screen.getByTestId("reset-password-form");
+
+    fireEvent.change(passwordInput, { target: { value: "Password123!" } });
+    fireEvent.change(confirmPasswordInput, {
+      target: { value: "Password123!" },
+    });
+
+    fireEvent.submit(resetPasswordForm);
+
+    await waitFor(() => {
+      expect(axios.post).toHaveBeenCalled();
+    });
+  });
 });
