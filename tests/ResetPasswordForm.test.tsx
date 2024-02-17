@@ -1,3 +1,7 @@
+import axios from "axios";
+
+jest.mock("axios");
+
 import "@testing-library/jest-dom";
 
 import {
@@ -32,14 +36,6 @@ test("confirm password input is present on form", () => {
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
 
   expect(confirmPasswordInput).toBeInTheDocument();
-});
-
-test("submit button is present on form", () => {
-  render(<ResetPasswordForm />);
-
-  const submitButton = screen.getByText("Submit");
-
-  expect(submitButton).toBeInTheDocument();
 });
 
 test("submit button is present on form", () => {
@@ -271,4 +267,113 @@ test(`"Submit" button should be enabled when password and confirm password are t
   const submitButton = screen.getByText("Submit");
 
   expect(submitButton).toBeEnabled();
+});
+
+test(`"Submit" button should be disabled when password and confirm password are not the same`, () => {
+  render(<ResetPasswordForm />);
+
+  const passwordInput = screen.getByPlaceholderText("New password");
+  const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
+
+  fireEvent.change(passwordInput, { target: { value: "Password123!" } });
+  fireEvent.change(confirmPasswordInput, {
+    target: { value: "Password1234!" },
+  });
+
+  const submitButton = screen.getByText("Submit");
+
+  expect(submitButton).toBeDisabled();
+});
+
+test(`"Submit" button should be disabled when password is not valid`, () => {
+  render(<ResetPasswordForm />);
+
+  const passwordInput = screen.getByPlaceholderText("New password");
+  const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
+
+  fireEvent.change(passwordInput, { target: { value: "password" } });
+  fireEvent.change(confirmPasswordInput, { target: { value: "password" } });
+
+  const submitButton = screen.getByText("Submit");
+
+  expect(submitButton).toBeDisabled();
+});
+
+test(`"Submit" button should be loading when user submits the form correctlly`, async () => {
+  render(<ResetPasswordForm />);
+
+  const passwordInput = screen.getByPlaceholderText("New password");
+  const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
+
+  fireEvent.change(passwordInput, { target: { value: "Password123!" } });
+  fireEvent.change(confirmPasswordInput, { target: { value: "Password123!" } });
+
+  const submitButton = screen.getByText("Submit");
+
+  fireEvent.click(submitButton);
+
+  await waitFor(() => {
+    expect(submitButton).toHaveProperty("disabled", true);
+    expect(submitButton).toHaveTextContent("Loading...");
+  });
+});
+
+test(`API call should be made when user submits the form correctly`, async () => {
+  render(<ResetPasswordForm />);
+
+  const passwordInput = screen.getByPlaceholderText("New password");
+  const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
+
+  fireEvent.change(passwordInput, { target: { value: "Password123!" } });
+  fireEvent.change(confirmPasswordInput, { target: { value: "Password123!" } });
+
+  const submitButton = screen.getByText("Submit");
+
+  fireEvent.click(submitButton);
+
+  await waitFor(() => {
+    expect(axios.post).toHaveBeenCalled();
+  });
+});
+
+test(`console.log with message "password changed" should be called when user submits the form correctly`, async () => {
+  global.console.log = jest.fn();
+
+  render(<ResetPasswordForm />);
+
+  const passwordInput = screen.getByPlaceholderText("New password");
+  const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
+
+  fireEvent.change(passwordInput, { target: { value: "Password123!" } });
+  fireEvent.change(confirmPasswordInput, { target: { value: "Password123!" } });
+
+  const submitButton = screen.getByText("Submit");
+
+  fireEvent.click(submitButton);
+
+  await waitFor(() => {
+    expect(console.log).toHaveBeenCalledWith("password changed");
+  });
+});
+
+test(`console.log with message "error changing password" should be called when user submits the form incorrectly`, async () => {
+  global.console.log = jest.fn();
+
+  jest.spyOn(axios, "post").mockRejectedValue(new Error("error"));
+
+  render(<ResetPasswordForm />);
+
+  const passwordInput = screen.getByPlaceholderText("New password");
+  const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
+
+  fireEvent.change(passwordInput, { target: { value: "Password123!" } });
+  fireEvent.change(confirmPasswordInput, { target: { value: "Password123!" } });
+
+  const submitButton = screen.getByText("Submit");
+
+  fireEvent.click(submitButton);
+
+  await waitFor(() => {
+    expect(console.log).toHaveBeenCalledWith("error changing password");
+  });
 });

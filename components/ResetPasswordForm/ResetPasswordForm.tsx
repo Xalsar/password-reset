@@ -4,11 +4,11 @@ import useResetPaswordForm from "./hooks/use-resetPasswordForm";
 
 const ResetPasswordForm = () => {
   const {
+    // FORM STATE
     password,
     handleTypePassword,
     confirmPassword,
     handleTypeConfirmPassword,
-    handleSubmit,
     // FORM VALIDATION
     isPasswordValid,
     has12Characters,
@@ -16,9 +16,10 @@ const ResetPasswordForm = () => {
     hasLowerCase,
     hasSpecialCharacter,
     hasUpperCase,
+    // FORM SUBMISSION
+    handleSubmit,
+    isLoading,
   } = useResetPaswordForm();
-
-  console.log("has12Characters", has12Characters);
 
   return (
     <div className={styles.resetPasswordForm}>
@@ -53,7 +54,9 @@ const ResetPasswordForm = () => {
           onChange={handleTypeConfirmPassword}
         />
 
-        <button disabled={!isPasswordValid}>Submit</button>
+        <button disabled={!isPasswordValid || isLoading}>
+          {isLoading ? "Loading..." : "Submit"}
+        </button>
       </form>
     </div>
   );

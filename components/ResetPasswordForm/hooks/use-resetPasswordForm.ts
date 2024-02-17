@@ -1,8 +1,12 @@
 import { useState } from "react";
 
+import axios from "axios";
+
 const useResetPaswordForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleTypePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -14,8 +18,22 @@ const useResetPaswordForm = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleSubmit = () => {
-    console.log("submitted");
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setIsLoading(true);
+
+    try {
+      await axios.post("/api/reset-password", {
+        password,
+      });
+
+      console.log("password changed");
+    } catch (error) {
+      console.log("error changing password");
+    }
+
+    setIsLoading(false);
   };
 
   let isPasswordValid = false;
@@ -43,7 +61,6 @@ const useResetPaswordForm = () => {
     handleTypePassword,
     confirmPassword,
     handleTypeConfirmPassword,
-    handleSubmit,
     // FORM VALIDATION
     isPasswordValid,
     has12Characters,
@@ -51,6 +68,9 @@ const useResetPaswordForm = () => {
     hasLowerCase,
     hasSpecialCharacter,
     hasUpperCase,
+    // FORM SUBMISSION
+    handleSubmit,
+    isLoading,
   };
 };
 
