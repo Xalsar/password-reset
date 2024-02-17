@@ -1,3 +1,5 @@
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+
 import styles from "@/styles/ResetPasswordForm.module.scss";
 
 import useResetPaswordForm from "./hooks/use-resetPasswordForm";
@@ -23,28 +25,32 @@ const ResetPasswordForm = () => {
 
   return (
     <div className={styles.resetPasswordForm}>
-      <h1>Reset password</h1>
+      <h1 className={styles.title}>Reset password</h1>
 
       <form onSubmit={handleSubmit}>
         <input
           placeholder="New password"
           value={password}
           onChange={handleTypePassword}
+          className={styles.passwordInput}
+          type="password"
         />
 
-        <ul>
-          <li className={`${has12Characters && styles.valid}`}>
-            12 characters minimum
+        <ul className={styles.validationParams}>
+          <li className={`${has12Characters ? styles.valid : ""}`}>
+            <TaskAltIcon /> 12 characters minimum
           </li>
-          <li className={`${hasNumber && styles.valid}`}>One number</li>
-          <li className={`${hasLowerCase && styles.valid}`}>
-            One lowercase letter
+          <li className={`${hasNumber ? styles.valid : ""}`}>
+            <TaskAltIcon /> One number
           </li>
-          <li className={`${hasSpecialCharacter && styles.valid}`}>
-            One special character
+          <li className={`${hasLowerCase ? styles.valid : ""}`}>
+            <TaskAltIcon /> One lowercase letter
           </li>
-          <li className={`${hasUpperCase && styles.valid}`}>
-            One uppercase character
+          <li className={`${hasSpecialCharacter ? styles.valid : ""}`}>
+            <TaskAltIcon /> One special character
+          </li>
+          <li className={`${hasUpperCase ? styles.valid : ""}`}>
+            <TaskAltIcon /> One uppercase character
           </li>
         </ul>
 
@@ -52,9 +58,14 @@ const ResetPasswordForm = () => {
           placeholder="Confirm password"
           value={confirmPassword}
           onChange={handleTypeConfirmPassword}
+          className={`${styles.passwordInput} ${styles.confirmPasswordInput}`}
+          type="password"
         />
 
-        <button disabled={!isPasswordValid || isLoading}>
+        <button
+          disabled={!isPasswordValid || isLoading}
+          className={styles.submitButton}
+        >
           {isLoading ? "Loading..." : "Submit"}
         </button>
       </form>

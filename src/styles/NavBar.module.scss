@@ -1,6 +1,11 @@
 .navbar {
   background-color: #1b1b1b;
-  padding: 1.6rem 0;
+  padding: 2.8rem 0;
+}
+
+.logo {
+  width: 5.08rem;
+  height: 5.6rem;
 }
 
 .container {
@@ -15,10 +20,12 @@
   background-color: transparent;
   border: none;
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.6rem;
   font-size: 1.6rem;
   border-radius: 30px;
-
+  line-height: 2.4rem;
+  font-weight: 500;
+  margin-left: 1.6rem;
 }
 
 .signUpButton {
