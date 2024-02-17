@@ -1,20 +1,26 @@
 import CustomButton from "./CustomButton";
 
+import { Box, Flex, Image } from "@cmpsr/components";
+
 import styles from "@/styles/NavBar.module.scss";
 
 const NavBar = () => {
   return (
-    <div className={styles.navbar}>
-      <div className={styles.container}>
-        <img src="/logo-svg.svg" className={styles.logo} />
+    <Box className={styles.navbar}>
+      <Flex
+        className={styles.container}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
+        <Image src="/logo-svg.svg" className={styles.logo} alt="logo" />
 
         <div>
           <CustomButton secondary>Log in</CustomButton>
 
           <CustomButton>Sign up</CustomButton>
         </div>
-      </div>
-    </div>
+      </Flex>
+    </Box>
   );
 };
 

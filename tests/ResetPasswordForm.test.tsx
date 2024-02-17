@@ -14,8 +14,14 @@ import {
 
 import ResetPasswordForm from "../components/ResetPasswordForm/ResetPasswordForm";
 
+import { ComposerProvider } from "@cmpsr/components";
+
+const wrapWithCmpsrProvider = (children: React.ReactNode) => {
+  return <ComposerProvider>{children}</ComposerProvider>;
+};
+
 test("reset password form is present", () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const resetPasswordForm = screen.getByText("Reset password");
 
@@ -23,7 +29,7 @@ test("reset password form is present", () => {
 });
 
 test("password input is present on form", () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -31,7 +37,7 @@ test("password input is present on form", () => {
 });
 
 test("confirm password input is present on form", () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
 
@@ -39,7 +45,7 @@ test("confirm password input is present on form", () => {
 });
 
 test("submit button is present on form", () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const submitButton = screen.getByText("Submit");
 
@@ -47,7 +53,7 @@ test("submit button is present on form", () => {
 });
 
 test("submit button is disabled when form is empty", () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const submitButton = screen.getByText("Submit");
 
@@ -55,7 +61,7 @@ test("submit button is disabled when form is empty", () => {
 });
 
 test("password input should change when typed", () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -65,7 +71,7 @@ test("password input should change when typed", () => {
 });
 
 test("confirm password input should change when typed", () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
 
@@ -75,7 +81,7 @@ test("confirm password input should change when typed", () => {
 });
 
 test(`"12 characters minimum" should not be green when password has less than 12 characters`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -87,7 +93,7 @@ test(`"12 characters minimum" should not be green when password has less than 12
 });
 
 test(`"12 characters minimum" should be green when password has 12 characters`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -100,7 +106,7 @@ test(`"12 characters minimum" should be green when password has 12 characters`, 
 
 test(`"12 characters minimum" should be green when password has more than 12 characters
 `, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -112,7 +118,7 @@ test(`"12 characters minimum" should be green when password has more than 12 cha
 });
 
 test(`"One number" should not be green when password has no number`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -124,7 +130,7 @@ test(`"One number" should not be green when password has no number`, () => {
 });
 
 test(`"One number" should be green when password has a number`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -136,7 +142,7 @@ test(`"One number" should be green when password has a number`, () => {
 });
 
 test(`"One number" should be green when password has more than one number`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -148,7 +154,7 @@ test(`"One number" should be green when password has more than one number`, () =
 });
 
 test(`"One lowercase letter" should not be green when password has no lowercase letter`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -160,7 +166,7 @@ test(`"One lowercase letter" should not be green when password has no lowercase 
 });
 
 test(`"One lowercase letter" should be green when password has a lowercase letter`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -172,7 +178,7 @@ test(`"One lowercase letter" should be green when password has a lowercase lette
 });
 
 test(`"One lowercase letter" should be green when password has more than one lowercase letter`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -184,7 +190,7 @@ test(`"One lowercase letter" should be green when password has more than one low
 });
 
 test(`"One special character" should not be green when password has no special character`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -196,7 +202,7 @@ test(`"One special character" should not be green when password has no special c
 });
 
 test(`"One special character" should be green when password has a special character`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -208,7 +214,7 @@ test(`"One special character" should be green when password has a special charac
 });
 
 test(`"One special character" should be green when password has more than one special character`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -220,7 +226,7 @@ test(`"One special character" should be green when password has more than one sp
 });
 
 test(`"One uppercase character" should not be green when password has no uppercase character`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -232,7 +238,7 @@ test(`"One uppercase character" should not be green when password has no upperca
 });
 
 test(`"One uppercase character" should be green when password has an uppercase character`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -244,7 +250,7 @@ test(`"One uppercase character" should be green when password has an uppercase c
 });
 
 test(`"One uppercase character" should be green when password has more than one uppercase character`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
 
@@ -256,7 +262,7 @@ test(`"One uppercase character" should be green when password has more than one 
 });
 
 test(`"Submit" button should be enabled when password and confirm password are the same and password is valid`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
@@ -270,7 +276,7 @@ test(`"Submit" button should be enabled when password and confirm password are t
 });
 
 test(`"Submit" button should be disabled when password and confirm password are not the same`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
@@ -286,7 +292,7 @@ test(`"Submit" button should be disabled when password and confirm password are 
 });
 
 test(`"Submit" button should be disabled when password is not valid`, () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
@@ -300,7 +306,7 @@ test(`"Submit" button should be disabled when password is not valid`, () => {
 });
 
 test(`"Submit" button should be loading when user submits the form correctlly`, async () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
@@ -319,7 +325,7 @@ test(`"Submit" button should be loading when user submits the form correctlly`, 
 });
 
 test(`API call should be made when user submits the form correctly`, async () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
@@ -339,7 +345,7 @@ test(`API call should be made when user submits the form correctly`, async () =>
 test(`console.log with message "password changed" should be called when user submits the form correctly`, async () => {
   global.console.log = jest.fn();
 
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
@@ -361,7 +367,7 @@ test(`console.log with message "error changing password" should be called when u
 
   jest.spyOn(axios, "post").mockRejectedValue(new Error("error"));
 
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");
@@ -379,7 +385,7 @@ test(`console.log with message "error changing password" should be called when u
 });
 
 test("when form is beeing submitted all inputs should be disabled", async () => {
-  render(<ResetPasswordForm />);
+  render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
   const passwordInput = screen.getByPlaceholderText("New password");
   const confirmPasswordInput = screen.getByPlaceholderText("Confirm password");

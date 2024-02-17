@@ -1,6 +1,12 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 
+import { ComposerProvider } from "@cmpsr/components";
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <ComposerProvider>
+      <Component {...pageProps} />
+    </ComposerProvider>
+  );
 }

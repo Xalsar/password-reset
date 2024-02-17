@@ -4,6 +4,8 @@ import CheckBoxIcon from "../CheckBoxIcon";
 
 import styles from "@/styles/ResetPasswordForm.module.scss";
 
+import { Box, Flex } from "@cmpsr/components";
+
 import useResetPaswordForm from "./hooks/use-resetPasswordForm";
 
 const ResetPasswordForm = () => {
@@ -26,7 +28,7 @@ const ResetPasswordForm = () => {
   } = useResetPaswordForm();
 
   return (
-    <div className={styles.resetPasswordForm}>
+    <Box className={styles.resetPasswordForm}>
       <h1 className={styles.title}>Reset password</h1>
 
       <form onSubmit={handleSubmit}>
@@ -39,24 +41,28 @@ const ResetPasswordForm = () => {
           disabled={isLoading}
         />
 
-        <ul className={styles.validationParams}>
-          <li className={`${has12Characters ? styles.valid : ""}`}>
+        <Flex
+          className={styles.validationParams}
+          gap={"1.6rem 0.4rem"}
+          wrap={"wrap"}
+        >
+          <div className={`${has12Characters ? styles.valid : ""}`}>
             <CheckBoxIcon />
             12 characters minimum
-          </li>
-          <li className={`${hasNumber ? styles.valid : ""}`}>
+          </div>
+          <div className={`${hasNumber ? styles.valid : ""}`}>
             <CheckBoxIcon /> One number
-          </li>
-          <li className={`${hasLowerCase ? styles.valid : ""}`}>
+          </div>
+          <div className={`${hasLowerCase ? styles.valid : ""}`}>
             <CheckBoxIcon /> One lowercase letter
-          </li>
-          <li className={`${hasSpecialCharacter ? styles.valid : ""}`}>
+          </div>
+          <div className={`${hasSpecialCharacter ? styles.valid : ""}`}>
             <CheckBoxIcon /> One special character
-          </li>
-          <li className={`${hasUpperCase ? styles.valid : ""}`}>
+          </div>
+          <div className={`${hasUpperCase ? styles.valid : ""}`}>
             <CheckBoxIcon /> One uppercase character
-          </li>
-        </ul>
+          </div>
+        </Flex>
 
         <input
           placeholder="Confirm password"
@@ -74,7 +80,7 @@ const ResetPasswordForm = () => {
           {isLoading ? "Loading..." : "Submit"}
         </CustomButton>
       </form>
-    </div>
+    </Box>
   );
 };
 
