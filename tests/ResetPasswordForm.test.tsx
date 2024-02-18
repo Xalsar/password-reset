@@ -108,7 +108,7 @@ describe("ResetPasswordForm", () => {
   });
 
   test(`"12 characters minimum" should be green when password has more than 12 characters
-`, () => {
+  `, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
     const passwordInput = screen.getByPlaceholderText("New password");
@@ -447,5 +447,30 @@ describe("ResetPasswordForm", () => {
     await waitFor(() => {
       expect(axios.post).toHaveBeenCalled();
     });
+  });
+
+  test("submit button should only be enabled when all requirements are met", async () => {
+    render(wrapWithCmpsrProvider(<ResetPasswordForm />));
+
+    const passwordInput = screen.getByPlaceholderText("New password");
+    const confirmPasswordInput =
+      screen.getByPlaceholderText("Confirm password");
+
+    const wrongPasswords = [
+      "12345679!Aa", // Not 12 characters
+      "qwertyuiop!A", // Not number
+      "1234567890A!", // Not lowercase
+      "qwertyuiopA9", // Not special character
+      "qwertyuiopa2!", // Not uppercase
+    ];
+
+    for (const password of wrongPasswords) {
+      fireEvent.change(passwordInput, { target: { value: password } });
+      fireEvent.change(confirmPasswordInput, {
+        target: { value: password },
+      });
+
+      expect(screen.getByText("Submit")).toBeDisabled();
+    }
   });
 });
