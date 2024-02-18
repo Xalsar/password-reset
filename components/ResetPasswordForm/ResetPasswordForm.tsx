@@ -46,22 +46,22 @@ const ResetPasswordForm = () => {
           gap={"1.6rem 0.4rem"}
           wrap={"wrap"}
         >
-          <div className={`${has12Characters ? styles.valid : ""}`}>
+          <Box className={`${has12Characters ? styles.valid : ""}`}>
             <CheckBoxIcon />
             12 characters minimum
-          </div>
-          <div className={`${hasNumber ? styles.valid : ""}`}>
+          </Box>
+          <Box className={`${hasNumber ? styles.valid : ""}`}>
             <CheckBoxIcon /> One number
-          </div>
-          <div className={`${hasLowerCase ? styles.valid : ""}`}>
+          </Box>
+          <Box className={`${hasLowerCase ? styles.valid : ""}`}>
             <CheckBoxIcon /> One lowercase letter
-          </div>
-          <div className={`${hasSpecialCharacter ? styles.valid : ""}`}>
+          </Box>
+          <Box className={`${hasSpecialCharacter ? styles.valid : ""}`}>
             <CheckBoxIcon /> One special character
-          </div>
-          <div className={`${hasUpperCase ? styles.valid : ""}`}>
+          </Box>
+          <Box className={`${hasUpperCase ? styles.valid : ""}`}>
             <CheckBoxIcon /> One uppercase character
-          </div>
+          </Box>
         </Flex>
 
         <input
