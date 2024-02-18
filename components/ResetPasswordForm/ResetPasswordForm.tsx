@@ -43,7 +43,8 @@ const ResetPasswordForm = () => {
 
         <Flex
           className={styles.validationParams}
-          gap={"1.6rem 0.4rem"}
+          rowGap={".4rem"}
+          columnGap={"1.6rem"}
           wrap={"wrap"}
         >
           <Box className={`${has12Characters ? styles.valid : ""}`}>
