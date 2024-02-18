@@ -32,47 +32,53 @@ const ResetPasswordForm = () => {
       <h1 className={styles.title}>Reset password</h1>
 
       <form onSubmit={handleSubmit} data-testid="reset-password-form">
-        <input
-          placeholder="New password"
-          value={password}
-          onChange={handleTypePassword}
-          className={styles.passwordInput}
-          type="password"
-          disabled={isLoading}
-        />
-
-        <Flex
-          className={styles.validationParams}
-          rowGap={".4rem"}
-          columnGap={"1.6rem"}
-          wrap={"wrap"}
+        <Box
+          className={`${styles.inputsContainer} ${
+            isLoading ? styles.inputsLoading : ""
+          } `}
         >
-          <Box className={`${has12Characters ? styles.valid : ""}`}>
-            <CheckBoxIcon />
-            12 characters minimum
-          </Box>
-          <Box className={`${hasNumber ? styles.valid : ""}`}>
-            <CheckBoxIcon /> One number
-          </Box>
-          <Box className={`${hasLowerCase ? styles.valid : ""}`}>
-            <CheckBoxIcon /> One lowercase letter
-          </Box>
-          <Box className={`${hasSpecialCharacter ? styles.valid : ""}`}>
-            <CheckBoxIcon /> One special character
-          </Box>
-          <Box className={`${hasUpperCase ? styles.valid : ""}`}>
-            <CheckBoxIcon /> One uppercase character
-          </Box>
-        </Flex>
+          <input
+            placeholder="New password"
+            value={password}
+            onChange={handleTypePassword}
+            className={styles.passwordInput}
+            type="password"
+            disabled={isLoading}
+          />
 
-        <input
-          placeholder="Confirm password"
-          value={confirmPassword}
-          onChange={handleTypeConfirmPassword}
-          className={`${styles.passwordInput} ${styles.confirmPasswordInput}`}
-          type="password"
-          disabled={isLoading}
-        />
+          <Flex
+            className={styles.validationParams}
+            rowGap={".4rem"}
+            columnGap={"1.6rem"}
+            wrap={"wrap"}
+          >
+            <Box className={`${has12Characters ? styles.valid : ""}`}>
+              <CheckBoxIcon />
+              12 characters minimum
+            </Box>
+            <Box className={`${hasNumber ? styles.valid : ""}`}>
+              <CheckBoxIcon /> One number
+            </Box>
+            <Box className={`${hasLowerCase ? styles.valid : ""}`}>
+              <CheckBoxIcon /> One lowercase letter
+            </Box>
+            <Box className={`${hasSpecialCharacter ? styles.valid : ""}`}>
+              <CheckBoxIcon /> One special character
+            </Box>
+            <Box className={`${hasUpperCase ? styles.valid : ""}`}>
+              <CheckBoxIcon /> One uppercase character
+            </Box>
+          </Flex>
+
+          <input
+            placeholder="Confirm password"
+            value={confirmPassword}
+            onChange={handleTypeConfirmPassword}
+            className={`${styles.passwordInput} ${styles.confirmPasswordInput}`}
+            type="password"
+            disabled={isLoading}
+          />
+        </Box>
 
         {isLoading ? (
           <Spinner data-testid="spinner" />
