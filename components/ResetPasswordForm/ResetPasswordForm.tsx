@@ -29,7 +29,7 @@ const ResetPasswordForm = () => {
 
   return (
     <Box className={styles.resetPasswordForm}>
-      <h1 className={styles.title}>Reset password</h1>
+      <h1 className={styles.title}>Reset Password</h1>
 
       <form onSubmit={handleSubmit} data-testid="reset-password-form">
         <Box
@@ -38,7 +38,7 @@ const ResetPasswordForm = () => {
           } `}
         >
           <input
-            placeholder="New password"
+            placeholder="New Password"
             value={password}
             onChange={handleTypePassword}
             className={styles.passwordInput}
@@ -60,7 +60,7 @@ const ResetPasswordForm = () => {
               <CheckBoxIcon /> One number
             </Box>
             <Box className={`${hasLowerCase ? styles.valid : ""}`}>
-              <CheckBoxIcon /> One lowercase letter
+              <CheckBoxIcon /> One lowercase character
             </Box>
             <Box className={`${hasSpecialCharacter ? styles.valid : ""}`}>
               <CheckBoxIcon /> One special character
@@ -71,7 +71,7 @@ const ResetPasswordForm = () => {
           </Flex>
 
           <input
-            placeholder="Confirm password"
+            placeholder="Confirm Password"
             value={confirmPassword}
             onChange={handleTypeConfirmPassword}
             className={`${styles.passwordInput} ${styles.confirmPasswordInput}`}

@@ -21,10 +21,10 @@ const wrapWithCmpsrProvider = (children: React.ReactNode) => {
 };
 
 describe("ResetPasswordForm", () => {
-  test("reset password form is present", () => {
+  test("Reset Password form is present", () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const resetPasswordForm = screen.getByText("Reset password");
+    const resetPasswordForm = screen.getByText("Reset Password");
 
     expect(resetPasswordForm).toBeInTheDocument();
   });
@@ -32,51 +32,51 @@ describe("ResetPasswordForm", () => {
   test("password input is present on form", () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     expect(passwordInput).toBeInTheDocument();
   });
 
-  test("confirm password input is present on form", () => {
+  test("Confirm Password input is present on form", () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     expect(confirmPasswordInput).toBeInTheDocument();
   });
 
-  test("submit button is present on form", () => {
+  test("Submit button is present on form", () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    expect(submitButton).toBeInTheDocument();
+    expect(SubmitButton).toBeInTheDocument();
   });
 
-  test("submit button is disabled when form is empty", () => {
+  test("Submit button is disabled when form is empty", () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    expect(submitButton).toBeDisabled();
+    expect(SubmitButton).toBeDisabled();
   });
 
   test("password input should change when typed", () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
     expect(passwordInput).toHaveValue("password");
   });
 
-  test("confirm password input should change when typed", () => {
+  test("Confirm Password input should change when typed", () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(confirmPasswordInput, { target: { value: "password" } });
 
@@ -86,7 +86,7 @@ describe("ResetPasswordForm", () => {
   test(`"12 characters minimum" should not be green when password has less than 12 characters`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
@@ -98,7 +98,7 @@ describe("ResetPasswordForm", () => {
   test(`"12 characters minimum" should be green when password has 12 characters`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password12345" } });
 
@@ -111,7 +111,7 @@ describe("ResetPasswordForm", () => {
   `, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password123456789" } });
 
@@ -123,7 +123,7 @@ describe("ResetPasswordForm", () => {
   test(`"One number" should not be green when password has no number`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
@@ -135,7 +135,7 @@ describe("ResetPasswordForm", () => {
   test(`"One number" should be green when password has a number`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password1" } });
 
@@ -144,10 +144,10 @@ describe("ResetPasswordForm", () => {
     expect(oneNumber).toHaveClass("valid");
   });
 
-  test(`"One number" should be green when password has more than one number`, () => {
+  test(`"One number" should be green when password has more than One number`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password123456789" } });
 
@@ -156,38 +156,38 @@ describe("ResetPasswordForm", () => {
     expect(oneNumber).toHaveClass("valid");
   });
 
-  test(`"One lowercase letter" should not be green when password has no lowercase letter`, () => {
+  test(`"One lowercase character" should not be green when password has no lowercase letter`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "PASSWORD" } });
 
-    const oneLowerCase = screen.getByText("One lowercase letter");
+    const oneLowerCase = screen.getByText("One lowercase character");
 
     expect(oneLowerCase).not.toHaveClass("valid");
   });
 
-  test(`"One lowercase letter" should be green when password has a lowercase letter`, () => {
+  test(`"One lowercase character" should be green when password has a lowercase letter`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
-    const oneLowerCase = screen.getByText("One lowercase letter");
+    const oneLowerCase = screen.getByText("One lowercase character");
 
     expect(oneLowerCase).toHaveClass("valid");
   });
 
-  test(`"One lowercase letter" should be green when password has more than one lowercase letter`, () => {
+  test(`"One lowercase character" should be green when password has more than One lowercase character`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "passwordpassword" } });
 
-    const oneLowerCase = screen.getByText("One lowercase letter");
+    const oneLowerCase = screen.getByText("One lowercase character");
 
     expect(oneLowerCase).toHaveClass("valid");
   });
@@ -195,7 +195,7 @@ describe("ResetPasswordForm", () => {
   test(`"One special character" should not be green when password has no special character`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
@@ -207,7 +207,7 @@ describe("ResetPasswordForm", () => {
   test(`"One special character" should be green when password has a special character`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password!" } });
 
@@ -216,10 +216,10 @@ describe("ResetPasswordForm", () => {
     expect(oneSpecialCharacter).toHaveClass("valid");
   });
 
-  test(`"One special character" should be green when password has more than one special character`, () => {
+  test(`"One special character" should be green when password has more than One special character`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, {
       target: { value: "password!@#$%^&*()" },
@@ -233,7 +233,7 @@ describe("ResetPasswordForm", () => {
   test(`"One uppercase character" should not be green when password has no uppercase character`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
@@ -245,7 +245,7 @@ describe("ResetPasswordForm", () => {
   test(`"One uppercase character" should be green when password has an uppercase character`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "Password" } });
 
@@ -254,10 +254,10 @@ describe("ResetPasswordForm", () => {
     expect(oneUpperCase).toHaveClass("valid");
   });
 
-  test(`"One uppercase character" should be green when password has more than one uppercase character`, () => {
+  test(`"One uppercase character" should be green when password has more than One uppercase character`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
 
     fireEvent.change(passwordInput, { target: { value: "PASSWORD" } });
 
@@ -266,154 +266,154 @@ describe("ResetPasswordForm", () => {
     expect(oneUpperCase).toHaveClass("valid");
   });
 
-  test(`"Submit" button should be enabled when password and confirm password are the same and password is valid`, () => {
+  test(`"Submit" button should be enabled when password and Confirm Password are the same and password is valid`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
     fireEvent.change(confirmPasswordInput, {
       target: { value: "Password123!" },
     });
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    expect(submitButton).toBeEnabled();
+    expect(SubmitButton).toBeEnabled();
   });
 
-  test(`"Submit" button should be disabled when password and confirm password are not the same`, () => {
+  test(`"Submit" button should be disabled when password and Confirm Password are not the same`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
     fireEvent.change(confirmPasswordInput, {
       target: { value: "Password1234!" },
     });
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    expect(submitButton).toBeDisabled();
+    expect(SubmitButton).toBeDisabled();
   });
 
   test(`"Submit" button should be disabled when password is not valid`, () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(passwordInput, { target: { value: "password" } });
     fireEvent.change(confirmPasswordInput, { target: { value: "password" } });
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    expect(submitButton).toBeDisabled();
+    expect(SubmitButton).toBeDisabled();
   });
 
   test(`A spinner should be displayed instead of "Submit" button when form is loading`, async () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
     fireEvent.change(confirmPasswordInput, {
       target: { value: "Password123!" },
     });
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    fireEvent.click(submitButton);
+    fireEvent.click(SubmitButton);
 
     const spinner = screen.getByTestId("spinner");
 
     await waitFor(() => {
-      expect(submitButton).not.toBeInTheDocument();
+      expect(SubmitButton).not.toBeInTheDocument();
       expect(spinner).toBeInTheDocument();
     });
   });
 
-  test(`API call should be made when user submits the form correctly`, async () => {
+  test(`API call should be made when user Submits the form correctly`, async () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
     fireEvent.change(confirmPasswordInput, {
       target: { value: "Password123!" },
     });
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    fireEvent.click(submitButton);
+    fireEvent.click(SubmitButton);
 
     await waitFor(() => {
       expect(axios.post).toHaveBeenCalled();
     });
   });
 
-  test(`console.log with message "password changed" should be called when user submits the form correctly`, async () => {
+  test(`console.log with message "password changed" should be called when user Submits the form correctly`, async () => {
     global.console.log = jest.fn();
 
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
     fireEvent.change(confirmPasswordInput, {
       target: { value: "Password123!" },
     });
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    fireEvent.click(submitButton);
+    fireEvent.click(SubmitButton);
 
     await waitFor(() => {
       expect(console.log).toHaveBeenCalledWith("password changed");
     });
   });
 
-  test(`console.log with message "error changing password" should be called when user submits the form incorrectly`, async () => {
+  test(`console.log with message "error changing password" should be called when user Submits the form incorrectly`, async () => {
     global.console.log = jest.fn();
 
     jest.spyOn(axios, "post").mockRejectedValue(new Error("error"));
 
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
     fireEvent.change(confirmPasswordInput, {
       target: { value: "Password123!" },
     });
 
-    const submitButton = screen.getByText("Submit");
+    const SubmitButton = screen.getByText("Submit");
 
-    fireEvent.click(submitButton);
+    fireEvent.click(SubmitButton);
 
     await waitFor(() => {
       expect(console.log).toHaveBeenCalledWith("error changing password");
     });
   });
 
-  test("when form is beeing submitted all inputs should be disabled", async () => {
+  test("when form is beeing Submitted all inputs should be disabled", async () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
     const resetPasswordForm = screen.getByTestId("reset-password-form");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
@@ -429,12 +429,12 @@ describe("ResetPasswordForm", () => {
     });
   });
 
-  test("submitting the form should be the same as clicking the submit button", async () => {
+  test("Submitting the form should be the same as clicking the Submit button", async () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
     const resetPasswordForm = screen.getByTestId("reset-password-form");
 
     fireEvent.change(passwordInput, { target: { value: "Password123!" } });
@@ -449,12 +449,12 @@ describe("ResetPasswordForm", () => {
     });
   });
 
-  test("submit button should only be enabled when all requirements are met", async () => {
+  test("Submit button should only be enabled when all requirements are met", async () => {
     render(wrapWithCmpsrProvider(<ResetPasswordForm />));
 
-    const passwordInput = screen.getByPlaceholderText("New password");
+    const passwordInput = screen.getByPlaceholderText("New Password");
     const confirmPasswordInput =
-      screen.getByPlaceholderText("Confirm password");
+      screen.getByPlaceholderText("Confirm Password");
 
     const wrongPasswords = [
       "12345679!Aa", // Not 12 characters

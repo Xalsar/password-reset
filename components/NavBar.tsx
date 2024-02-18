@@ -17,7 +17,7 @@ const NavBar = () => {
         <div>
           <CustomButton secondary>Log in</CustomButton>
 
-          <CustomButton>Sign up</CustomButton>
+          <CustomButton>Sign Up</CustomButton>
         </div>
       </Flex>
     </Box>
