@@ -1,8 +1,8 @@
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton/CustomButton";
 
 import { Box, Flex, Image } from "@cmpsr/components";
 
-import styles from "@/styles/NavBar.module.scss";
+import styles from "./NavBar.module.scss";
 
 const NavBar = () => {
   return (

@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import NavBar from "../../components/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import ResetPasswordForm from "../../components/ResetPasswordForm/ResetPasswordForm";
 
 import styles from "@/styles/Home.module.scss";

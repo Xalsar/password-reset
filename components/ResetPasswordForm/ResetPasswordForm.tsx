@@ -1,8 +1,8 @@
-import CustomButton from "../CustomButton";
+import CustomButton from "../CustomButton/CustomButton";
 
 import CheckBoxIcon from "../CheckBoxIcon";
 
-import styles from "@/styles/ResetPasswordForm.module.scss";
+import styles from "./ResetPasswordForm.module.scss";
 
 import { Box, Flex, Spinner } from "@cmpsr/components";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "@/styles/CustomButton.module.scss";
+import styles from "./CustomButton.module.scss";
 
 const CustomButton: React.FC<{
   disabled?: boolean;
