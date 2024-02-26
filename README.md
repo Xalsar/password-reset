@@ -1,6 +1,6 @@
 # Password reset app
 
-A little project to showcase my abilities and test new technologies, libraries, and methods.
+Simple app that requires users to enter matching passwords meeting specific criteria to submit the form.
 
 This project is based on a Figma design you can find in `/password-change.fig`.
 
